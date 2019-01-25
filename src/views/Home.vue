@@ -19,7 +19,7 @@
                         <td>{{ ToDo.Title }}</td>
                         <td>{{ ToDo.Description }}</td>
                         <td><router-link :to="{ name: 'updateToDo', params: { id: ToDo._id } }" class="btn btn-warning">
-                Update</router-link>&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-danger" v-on:click="deleteToDo(ToDo._id)">Delete</button></td>
+                Update</router-link>&nbsp&nbsp&nbsp&nbsp&nbsp<button class="btn btn-danger" v-on:click="deleteToDo(ToDo._id, index)">Delete</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -52,16 +52,20 @@ export default {
                 this.ToDos = response.data;
             });
         },
-        deleteToDo(id)
+        deleteToDo(id, index)
         {
             const uri = 'http://localhost:3000/ToDoList/' + id;
-            this.axios.get(uri).then((response) => {
+            /*this.axios.get(uri).then((response) => {
                 this.ToDos = response.data;
-            });
+            });*/
             this.axios.delete(uri, this.ToDos)
-                .then(data => {
+                .then(response => {
                     this.fetchToDo();
                 })
+            /*this.axios.delete(uri, this.ToDos)
+                .then(response => this.ToDos.splice(index, 1))
+                .then(response => this.fetchToDo())
+                .catch(err => console.error(err))*/
         },
     },
 };
