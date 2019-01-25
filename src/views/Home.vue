@@ -6,7 +6,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        <!--<th>ID</th>-->
                         <th>Title</th>
                         <th>Description</th>
                         <th></th>
@@ -15,7 +15,7 @@
                 </thead>
                 <tbody>
                     <tr v-for="ToDo in ToDos" :key="ToDo._id">
-                        <td>{{ ToDo._id }}</td>
+                        <!--<td>{{ ToDo._id }}</td>-->
                         <td>{{ ToDo.Title }}</td>
                         <td>{{ ToDo.Description }}</td>
                         <td><router-link :to="{ name: 'updateToDo', params: { id: ToDo._id } }" class="btn btn-warning">
@@ -55,9 +55,6 @@ export default {
         deleteToDo(id, index)
         {
             const uri = 'http://localhost:3000/ToDoList/' + id;
-            /*this.axios.get(uri).then((response) => {
-                this.ToDos = response.data;
-            });*/
             this.axios.delete(uri, this.ToDos)
                 .then(response => {
                     this.fetchToDo();
