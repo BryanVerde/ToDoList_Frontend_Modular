@@ -33,7 +33,7 @@ export default {
     methods: {
         getToDos()
         {
-            const uri = 'http://localhost:3000/ToDoList/' + this.$route.params.id;
+            const uri = 'http://192.168.99.100:3000/ToDoList/' + this.$route.params.id;
             this.axios.get(uri).then((response) => {
                 this.ToDos = response.data;
                 console.log(this.ToDos)
@@ -41,7 +41,7 @@ export default {
         },
         updateToDos()
         {
-            const uri = 'http://localhost:3000/ToDoList/' + this.$route.params.id;
+            const uri = 'http://192.168.99.100:3000/ToDoList/' + this.$route.params.id;
             this.axios.put(uri, this.ToDos).then((response) => {
                 this.$router.push({ name: 'home' })
             })

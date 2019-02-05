@@ -47,14 +47,14 @@ export default {
     methods: {
         fetchToDo()
         {
-            const uri = 'http://localhost:3000/ToDoList';
+            const uri = 'http://192.168.99.100:3000/ToDoList';
             this.axios.get(uri).then((response) => {
                 this.ToDos = response.data;
             });
         },
         deleteToDo(id, index)
         {
-            const uri = 'http://localhost:3000/ToDoList/' + id;
+            const uri = 'http://192.168.99.100:3000/ToDoList/' + id;
             this.axios.delete(uri, this.ToDos)
                 .then(response => {
                     this.fetchToDo();

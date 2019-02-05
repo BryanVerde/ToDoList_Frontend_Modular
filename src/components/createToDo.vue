@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     addToDo() {
-      const uri = 'http://localhost:3000/ToDoList';
+      const uri = 'http://192.168.99.100:3000/ToDoList';
       this.axios.post(uri, this.ToDos).then((response) => {
         console.log(response);
         this.ToDos.Title = '';
